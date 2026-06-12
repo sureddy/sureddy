@@ -1,6 +1,6 @@
 # Hi, I'm Surendra Reddy 👋
 
-I build where code meets soil. My work sits at the intersection of governed autonomous systems, regenerative agriculture, and the trust infrastructure that institutions will need before they let AI act on their behalf.
+I build where code meets soil. My work sits at the intersection of governed autonomous systems, regenerative AI, and the trust infrastructure that institutions will need before they let AI act on their behalf. Regenerative AI is regenerative systems thinking applied to intelligence itself: systems designed to restore and compound the health of what they touch, whether that is soil, supply chains, institutions, or the humans inside them. Agriculture is where the thinking started for me, and it remains the proving ground.
 
 I'm the founder of **451 Ventures**, a thesis-based venture lab for the period before consensus. We look for places where value is moving before the market has settled on language, categories, or winners. Enterprises are great at starting AI. I help them finish it.
 
@@ -11,9 +11,9 @@ My current center of gravity is **Actra**, an architecture for governed autonomo
 The conviction behind it is simple. The next generation of software will not just automate workflows. It will reason, learn, and act inside real-world systems, and it will have to prove, continuously and independently, why it deserves that authority.
 
 - 🔭 Working on: Actra and the broader architecture of governed autonomy
-- 🌱 Learning: how autonomous agents, physical AI, and regenerative systems reshape institutional decision-making
+- 🌱 Learning: how autonomous agents, physical AI, and regenerative systems thinking reshape institutional decision-making
 - 👯 Open to collaborating on: AI-native systems, agent governance, venture labs, and trust architectures for complex real-world domains
-- 💬 Ask me about: governed autonomy, Physical AI, regenerative venture building, soil-to-health intelligence, and why trust is the real bottleneck in AI adoption
+- 💬 Ask me about: governed autonomy, Physical AI, regenerative AI, soil-to-health intelligence, and why trust is the real bottleneck in AI adoption
 - 📫 Reach me: **[sureddy@coretical.com](mailto:sureddy@coretical.com)**
 - 😄 Pronouns: He/Him
 - ⚡ Fun fact: the future of AI will be decided as much in farms, factories, hospitals, and field operations as inside model labs
@@ -26,7 +26,7 @@ Self-reporting is not verification. A system that grades its own homework cannot
 
 ## 451 Ventures
 
-451 Ventures builds at the edges where AI, biology, software, and institutions converge. Our work spans governed autonomous systems, Physical AI, regenerative agriculture, food-as-health infrastructure, verification and assurance systems, and AI-native venture creation. The common thread is that the next major opportunity is not better intelligence. It is trusted autonomy.
+451 Ventures builds at the edges where AI, biology, software, and institutions converge. Our work spans governed autonomous systems, Physical AI, regenerative AI across agriculture and food-as-health infrastructure, verification and assurance systems, and AI-native venture creation. The common thread is that the next major opportunity is not better intelligence. It is trusted autonomy.
 
 ## Writing and research
 
