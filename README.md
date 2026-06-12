@@ -11,7 +11,7 @@ My current center of gravity is **Actra**, an architecture for governed autonomo
 The conviction behind it is simple. The next generation of software will not just automate workflows. It will reason, learn, and act inside real-world systems, and it will have to prove, continuously and independently, why it deserves that authority.
 
 - 🔭 Working on: Actra and the broader architecture of governed autonomy
-- 🌱 Learning: how autonomous agents, physical AI, and regenerative agriculture reshape institutional decision-making
+- 🌱 Learning: how autonomous agents, physical AI, and regenerative systems reshape institutional decision-making
 - 👯 Open to collaborating on: AI-native systems, agent governance, venture labs, and trust architectures for complex real-world domains
 - 💬 Ask me about: governed autonomy, Physical AI, regenerative venture building, soil-to-health intelligence, and why trust is the real bottleneck in AI adoption
 - 📫 Reach me: **[sureddy@coretical.com](mailto:sureddy@coretical.com)**
