@@ -11,8 +11,7 @@ My center of gravity is **Actra**, an architecture for governed autonomous syste
 * 🔭 Working on: Actra and the broader architecture of governed autonomy
 * 🌱 Learning: how autonomous agents, Physical AI, and regenerative systems thinking reshape institutional decision-making
 * 👯 Open to collaborating on: AI-native systems, agent governance, venture labs, and trust architectures for complex real-world domains
-* 📫 Reach me: [sureddy@coretical.com](mailto:sureddy@coretical.com)
-* 😄 Pronouns: He/Him
+* 📫 Reach me: [sureddy@451ventures.com](mailto:sureddy@451ventures.com)
 * ⚡ Fun fact: the future of AI will be decided as much in farms, factories, hospitals, and field operations as inside model labs
 
 ## Core thesis
