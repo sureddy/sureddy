@@ -35,7 +35,7 @@ This is regenerative thinking applied to intelligence itself: not just making AI
 
 **[The Hidden Architecture](https://sureddy.substack.com)** is closer to a memoir. It traces the systems underneath a life of building: soil in India as a kid, labs, factories, cities, databases, cloud platforms, AI systems, the scars that come from building companies, family, purpose, and regenerative prosperity.
 
-**[SuperCIO](https://supercio.substack,com)** is my field journal for enterprise AI. Control planes, agent governance, AI-native operating models, autonomous product engineering, cloud ops, data platforms, and how the job of a technology leader keeps changing under all of it.
+**[SuperCIO](https://supercio.substack.com)** is my field journal for enterprise AI. Control planes, agent governance, AI-native operating models, autonomous product engineering, cloud ops, data platforms, and how the job of a technology leader keeps changing under all of it.
 
 **[451°](https://451ventures.substack.com)** covers venture building, regenerative prosperity, capital formation, institutional trust, and the operating models you need before a category has even settled.
 
