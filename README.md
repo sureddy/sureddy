@@ -10,7 +10,7 @@ Most enterprises are good at starting AI. I help them finish.
 
 ## What I'm building
 
-My main focus is governed AI architecture: the operating discipline enterprises need as AI moves from experimentation into trusted execution.
+My main focus is [governed AI architecture: the operating discipline enterprises need as AI moves from experimentation into trusted execution](https://github.com/sureddy/sureddy/blob/main/papers/the-governed-enterprise-ai-stack.md).
 
 Through 451 Labs and the emerging 451 AI Company, I am building a stack for AI systems that can act with control, evidence, restraint, memory, accountability, and measurable value. Actra is one expression of this work, focused on governed autonomous systems. Around it sit Atma for recursive self-adaptation, Pola for policy orchestration, Satori for outcome orchestration, Astra for strategic thesis reasoning, and Ana for memory and contextual intelligence.
 
