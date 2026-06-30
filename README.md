@@ -10,11 +10,11 @@ Most enterprises are good at starting AI. I help them finish.
 
 ## What I'm building
 
-My main focus is **Actra**, an architecture for governed autonomous systems. It brings control, trust, reasoning, assurance, memory, and maturity together into one operating discipline, built for enterprises that need their AI to act with evidence behind it, with restraint, and with real accountability.
+My main focus is governed AI architecture: the operating discipline enterprises need as AI moves from experimentation into trusted execution.
 
-Around Actra I'm building out a broader agentic stack: **Atma** (recursive self adaptation), **Pola** (policy orchestration), **Satori** (outcome orchestration), **Astra** (strategic thesis reasoning), and **Ana** (memory and contextual intelligence).
+Through 451 Labs and the emerging 451 AI Company, I am building a stack for AI systems that can act with control, evidence, restraint, memory, accountability, and measurable value. Actra is one expression of this work, focused on governed autonomous systems. Around it sit Atma for recursive self-adaptation, Pola for policy orchestration, Satori for outcome orchestration, Astra for strategic thesis reasoning, and Ana for memory and contextual intelligence.
 
-Trusted autonomy is the thread that ties all of this together. Underneath that sits something deeper: regenerative prosperity.
+Trusted autonomy is the thread that ties it together. Regenerative prosperity is the reason it matters.
 
 ## The foundations
 
