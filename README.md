@@ -37,6 +37,8 @@ This is regenerative thinking applied to intelligence itself: not just making AI
 
 **[SuperCIO](https://supercio.substack.com)** is my field journal for enterprise AI. Control planes, agent governance, AI-native operating models, autonomous product engineering, cloud ops, data platforms, and how the job of a technology leader keeps changing under all of it.
 
+**[Antilogs](https://antilogs.substack.com)** is my practice for noticing what systems are not saying: missing signals, hidden fragilities, false assumptions, and the negative space where better theses begin.
+
 **[451°](https://451ventures.substack.com)** covers venture building, regenerative prosperity, capital formation, institutional trust, and the operating models you need before a category has even settled.
 
 ## Core thesis
