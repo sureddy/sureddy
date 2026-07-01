@@ -1,437 +1,490 @@
-# The Governed Enterprise AI Stack
 
-### A Reference Architecture for Trusted Action, Human Agency, Recursive Self-Adaptation, and Regenerative Enterprise Performance
+# The Governed Enterprise AI Stack, Version 2.0
 
-*SuperCIO | Enterprise Blueprint Series*
+*A Vendor-Agnostic Reference Architecture for Trusted Action, Human Agency, Recursive Self-Adaptation, and Regenerative Enterprise Performance, revised for the era of governed action.*
 
-**Surendra Reddy · 451 Labs · December 10, 2025**
-
-*Reference Architecture · Version 1.0*
+**Surendra Reddy, 451 Labs. June 30, 2026.**
+*Version 2.0. Supersedes Version 1.0 (December 10, 2025). Vendor-agnostic. Change history tracked in Appendix A.*
 
 ## Executive Summary
 
-Enterprise AI has crossed a line. It is no longer a collection of models, copilots, dashboards, or isolated productivity tools. It now reaches into data, decisions, workflows, software development, customer experience, compliance, infrastructure, and organizational learning. As these systems grow more capable, they grow more consequential. They do not merely answer questions: they retrieve context, invoke tools, delegate tasks, modify systems, generate artifacts, coordinate with other agents, and shape the decisions people make.
+This is a reference architecture, written to be vendor-agnostic. It names control points, capabilities, and standards rather than products, so that any enterprise can use it to evaluate its own systems and any provider against a neutral baseline. Where a market pattern is described, it is described by strategic archetype rather than by company, and the archetypes are set out in Appendix B.
 
-That shift demands a new reference architecture. This paper presents the Governed Enterprise AI Stack, a layered architecture for turning intelligence into trusted action. It begins with the physical foundations of AI, including energy, facilities, compute, networking, and storage. It then rises through data, context, models, inference, memory, protocol, agents, governance, observability, recursive self-adaptation, enterprise experience, and human agency. Cross-cutting operating planes for security, governance, FinOps, resilience, human agency, and regeneration hold the layers together as a working system rather than a static diagram.
+Version 1.0 argued, in December 2025, that the enterprise AI stack does not end at agents. It ends at governed action that preserves human agency, learns safely, and regenerates enterprise capacity. That claim was a forecast. Six months later it reads as a description. This version records what changed, sharpens the architecture against that change, and tracks every revision in the appendices.
 
-The central claim is short. **The enterprise AI stack does not end at agents. It ends at governed action that preserves human agency, learns safely, and regenerates enterprise capacity.** Everything below that line is plumbing. The line itself is the architecture.
+The change is best read as a pattern rather than a single event. Through the first half of 2026, every major category of enterprise platform converged on the same layer. Vendors anchored in the system of record, in cross-functional workflow, in identity and the workplace, in the customer relationship, in the cloud and the model, and in cross-system execution each began building a governance and orchestration layer for autonomous agents (Reddy, 2026f; Reddy, 2026i). At the same time the two connection protocols that agents rely on, one for reaching tools and data and one for coordinating with other agents, were both placed under neutral foundation governance, which means the coordination point could no longer settle at the protocol layer and had to move up to governance (Linux Foundation, 2025; A2A Project, 2025; Model Context Protocol, 2025).
 
-The distinction has teeth. A company can buy frontier model access, deploy copilots, expose tools through the Model Context Protocol, experiment with agent-to-agent communication, and still fail to become AI-native. The failure rarely comes from weak models. It comes from missing architecture: context that is not governed, agent authority that is unclear, workflows that are never redesigned, human judgment that is bypassed or overloaded, evaluation that is thin, costs that leak, and learning loops that no one trusts.
+When competitors across every category fortify the same layer, the convergence itself is the signal. It marks the place the ecosystem has decided it cannot route around. The 451 canon names that place the era of governed action, the third in a sequence after the era of the system of record and the era of the system of engagement (Reddy, 2026i). This paper is the architecture beneath that pattern, written so that it belongs to no single provider.
 
-The organization then accumulates automation without developing adaptive capacity. That accumulation is the tell. *Automation without adaptive capacity is the signal that the architecture is absent*, no matter how many agents are running. This paper is written to make that failure visible early and to give leaders a structure that prevents it.
+The load-bearing reason the layer matters is an asymmetry, not a trend. **A wrong answer is an inconvenience. A wrong action is a loss.** Model quality keeps improving and keeps commoditizing, yet the hard problem was never whether AI can produce an answer. It is whether AI can safely complete real work inside a real company, which takes context, identity, authority, memory, proof, exception handling, and a way to reverse harm. The enterprise does not buy intelligence in the abstract. It buys accountable outcomes (Reddy, 2026i).
 
-The Governed Enterprise AI Stack closes the gap. It treats agents as situated actors inside a larger system of context, authority, memory, proof, human oversight, recursive adaptation, and regenerative value. It also accepts that enterprise AI must evolve. Systems must learn from outcomes, propose changes, prove their safety, operate inside authority envelopes, and remain subject to human governance. That governed improvement loop is what the paper calls Recursive Self-Adaptation: the discipline that lets a system change its methods without rewriting its mandate.
+Two failures bound the problem on either side. On one side, the skeptics are right that most agentic pilots fail: industry analysts expect more than 40% of agentic AI projects to be cancelled by the end of 2027, and research found that the large majority of enterprise AI pilots delivered no measurable return (Gartner, 2025; MIT NANDA, 2025). Those are not failures of intelligence. They are failures of deployment, data quality, ownership of edge cases, and governance, which makes the skeptic's evidence a bill of materials for the missing layer rather than a refutation of it. On the other side, success can be its own trap. When many firms run similar agents on similar data toward similar objectives, the result is convergence rather than advantage, a sameness named the agentic convergence trap (van Esch et al., 2026).
 
-The future enterprise will not be defined by how many agents it deploys. It will be defined by the quality of its context, the clarity of its authority model, the strength of its observability, the discipline of its adaptation loops, the dignity it preserves for human agency, and the regenerative capacity it builds into the organization. The sections that follow lay out the thirteen layers and the operating planes that make this possible.
+Version 2.0 therefore makes one addition to the spine of the argument. Governed action is not only a safety mechanism. It is a strategic instrument. The objective an agent optimizes is an expression of strategy, proprietary judgment matters more than proprietary data, and the control layer is where a company decides which friction to keep and how to stay recognizably itself while competitors optimize toward the same generic mean (Reddy, 2026e). The thirteen layers, seven planes, and two loops carry forward from Version 1.0. What follows updates them for a market that has moved from forecasting the governed-action layer to fighting over it.
 
+# Part I: What Changed Since Version 1.0
 
-## 1. The Enterprise AI Challenge
+## 1. From Reference Architecture to Contested Layer
 
-Enterprise AI is entering a new phase. The first phase was experimentation. Teams tested large language models, built internal copilots, connected knowledge bases, deployed chat interfaces, and automated small tasks. The second phase is more demanding, because AI is now being asked to participate in real work.
+Version 1.0 described a layer most of the market had not yet named. Version 2.0 describes a layer the market is now fighting to own. The intervening six months supplied three developments that, read together, point to the same place and justify a revision rather than a reprint.
 
-Real work is not a demo. It has customers, employees, controls, approvals, exceptions, deadlines, contracts, policies, systems of record, audit requirements, and consequences. A model response can be useful, yet enterprise work requires more than response generation. It requires trusted context, appropriate authority, controlled action, observable execution, feedback, and accountability.
+### 1.1 Capability commoditized, and value moved to the interface
 
-This matters more as agentic systems mature, because emerging protocols make it easier for AI to connect to tools and to other agents. The Model Context Protocol defines a standard way for applications to expose resources, prompts, and tools to AI systems, including tools that query databases, call APIs, or perform computations (Model Context Protocol, 2025). The Agent2Agent protocol describes how agents discover one another and coordinate work through agent cards, messages, tasks, and artifacts; introduced by Google in April 2025, it was contributed to the Linux Foundation in June 2025 for vendor-neutral governance (Google, 2025; A2A Project, 2025). Together these standards move AI from isolated interaction toward distributed activity.
+For about two years, capability was the prize. Build the smartest model, climb the benchmark, and the market was supposed to follow. That instinct went stale as open weights collapsed the price of a competent model and the gap between the best system and the second best narrowed in the ways a buyer feels. When the input becomes abundant, value moves to whatever stays scarce, and the scarce thing is the interface that makes intelligence dependable, governable, and economically useful, the layer where a capable model becomes a trusted action (Reddy, 2026j).
 
-That movement creates a new class of architecture problem. Once AI systems can retrieve data, call tools, delegate tasks, and produce artifacts, the enterprise must answer questions that model capability alone cannot resolve. Which source is authoritative, which policy applies, which agent is acting, and what authority has been delegated? Which tools are available in this context, what action requires human approval, what must be logged, and what must be explained? What happens when the agent is uncertain, what may the system learn, what must it never change, and who remains accountable?
+This reframes the strategic question for the whole stack. The contest is no longer which model reasons best. It is which layer becomes the route everyone must pass through, like the single step in a production chain that the rest of the chain cannot bypass. That layer is governance, and it is conspicuously unsolved: enterprise studies in 2026 found only about one in five organizations with a mature model for governing autonomous agents, even as task-specific agents spread into a large share of enterprise applications (Deloitte, 2026; Reddy, 2026j).
 
-These are the questions of governed enterprise AI. The stack that follows is built to answer them in a consistent place rather than scattering the answers across vendors, teams, and ad hoc integrations.
+### 1.2 The protocols went neutral, so the coordination point moved up
 
+In December 2025, the protocol that lets agents reach tools and data was donated to a newly formed agentic foundation under neutral, multi-party governance, joining the protocol that lets agents coordinate with one another, which had been placed under the same foundation family earlier in the year (Linux Foundation, 2025; A2A Project, 2025). A protocol deliberately handed to a neutral foundation cannot become any single provider's private chokepoint, so the coordination point cannot settle at the connection layer. It has to move one level up, to the governance of action.
 
-## 2. The Core Thesis
+### 1.3 The incumbents converged, which is the clearest signal of all
 
-The Governed Enterprise AI Stack rests on five claims. Each one moves the center of gravity away from raw model capability and toward governed, regenerative action.
+Across every strategic position, platform providers began building governance and orchestration on top of the open protocols rather than under them, racing for the layer that decides trust (Reddy, 2026i; Reddy, 2026j). When competitors converge on one layer the way an entire industry once converged on a single shared constraint, the convergence is the tell. Appendix B maps the strategy archetypes by center of gravity, control-plane move, and structural limit, without naming companies. The pattern across all of them is identical: whoever can answer, for every agent, who acted and under what authority, holds the next control point.
 
-**First, intelligence is not value until it becomes trusted action.** A model can reason, summarize, generate, or classify, but enterprise value appears only when intelligence improves decisions, workflows, services, operations, products, and outcomes.
+This is the architecture-level problem behind the market-level pattern. The era of governed action is the contest for the layer where AI, identity, memory, policy, permissions, audit, and execution finally have to meet (Reddy, 2026i). The rest of this paper specifies that layer and the stack it sits inside, in terms any provider or enterprise can implement.
 
-**Second, agents are not the top of the architecture.** Agents are situated actors inside a larger fabric of memory, context, authority, tools, humans, proof, and governance. Treating them as the summit is the most common and most expensive mistake in enterprise AI.
+## 2. The Core Thesis, Restated
 
-**Third, governance must move from documentation to runtime.** Governance cannot remain in policies, committees, model cards, and post-hoc reviews. It must operate while the system retrieves context, selects tools, delegates work, executes tasks, and learns from outcomes.
+The five claims of Version 1.0 hold. They are restated here with the emphasis the last six months earned, and with two additions promoted from supporting points to load-bearing ones.
 
-**Fourth, adaptation must be governed.** Enterprise AI systems must improve, but they cannot be free to rewrite their own objectives, authority boundaries, controls, or constitutional commitments. Recursive Self-Adaptation is the disciplined middle path between static automation and uncontrolled recursive self-improvement.
+**First, intelligence is not value until it becomes trusted action.** Capability is now abundant and cheap, which sharpens rather than softens the claim. The scarce, defensible thing is the governed interface where a capable model becomes an accountable outcome (Reddy, 2026j).
 
-**Fifth, human agency and regeneration are architectural requirements, not cultural add-ons.** AI should expand human capacity, not hollow it out, and it should renew enterprise knowledge, trust, capability, resilience, and value creation over time.
+**Second, agents are not the top of the architecture.** Agents are situated actors inside a fabric of memory, context, authority, tools, humans, proof, and governance. The market validated this the hard way, through pilots that died not from weak models but from missing architecture (Gartner, 2025; MIT NANDA, 2025).
 
+**Third, governance must operate at runtime.** Documentation, committees, and model cards remain necessary and remain insufficient. Governance now has to live in identity, policy engines, approval gates, and audit at the moment of action, which is exactly where the market is building.
 
-## 3. The Governed Enterprise AI Stack
+**Fourth, adaptation must be governed.** Systems must improve without rewriting their mandate, authority, or safety envelope. The deeper lesson of 2026 is that generation has become cheap while verification has not, so the binding constraint on any self-improving system is proof (Reddy, 2026h).
 
-The stack has thirteen layers, numbered from 0 to 12. Numbering begins at zero because physical infrastructure is not background scenery. It is the foundation on which everything else runs, and ignoring it produces unworkable economics and brittle operations.
+**Fifth, human agency and regeneration are architectural requirements.** AI should expand human capacity and renew enterprise capability rather than hollow it out. In a flatter, more leveraged firm, governance has to live in the architecture because there are fewer humans standing between intent and execution (Reddy, 2025d).
+
+Two additions are now part of the spine rather than the commentary. The first is that the objective an agent optimizes is an expression of strategy, not a neutral setting, because an agent told to chase generic efficiency will reproduce generic behavior (Reddy, 2026e). The second is that proprietary judgment matters more than proprietary data, since unique data still produces ordinary decisions when agents optimize toward ordinary goals. Both move governed action from a compliance concern to a strategic one.
+
+## 3. The Era of Governed Action: The Strategic Frame
+
+Three decades of enterprise software read as a sequence of contests over where control sits inside the company. Naming the sequence by its control point, rather than by the companies that won each round, keeps the frame durable and vendor-neutral (Reddy, 2026i).
+
+**The era of the system of record.** Control sat with whoever owned the place where corporate truth lived, the database beneath applications, reporting, transactions, and decisions. Installed software had weight and permanence, and once a company tied its data to that core, the relationship became institutional gravity.
+
+**The era of the system of engagement.** The premise was attacked rather than out-built. Software as a service moved the product to the vendor's cloud, turned deployment into a subscription, made upgrades routine, and handed more control to the business user. The front office became programmable, and for a while that felt like liberation.
+
+**The era of governed action.** Every successful rebellion builds its own orthodoxy, and software as a service produced a new fragmentation: industry research puts the average large enterprise near a thousand applications, most of them unconnected, each with its own data model and permissions (Reddy, 2026i). A human clicking between those systems is merely inefficient. An agent moving across them without clear authority is a governance, security, compliance, and accountability question at once. That is the opening for the era of governed action.
+
+The same progression appears from the system-of-record side as systems of record, then systems of insight, then systems of engagement, and now systems of autonomous execution (Reddy, 2026d). Whatever the vocabulary, the prize is the governed-action layer, and the reason is the asymmetry stated in the executive summary. A wrong answer is an inconvenience and a wrong action is a loss, so completing work safely takes more than intelligence. It takes context, identity, authority, memory, an audit trail, exception handling, and a way to roll back. The enterprise buys accountable outcomes, which is why the action layer is where durable power settles (Reddy, 2026i).
+
+This contest will not resolve cleanly, because enterprise software rarely crowns a single winner. The likeliest outcome is a contested mesh of control planes rather than one throne. The direction is still unambiguous. The next strategic layer is governed action, and the stack that follows is the architecture an enterprise needs in order to stand inside that layer rather than be standardized by whoever owns it.
+
+# Part II: The Stack, Version 2.0
+
+The stack keeps its thirteen layers, numbered 0 to 12, because the foundations did not move. What moved is the weight on the upper layers, where the contest now sits. Layers that carry forward unchanged are stated briefly with their strategic question. Layers that changed materially carry a marker and a fuller treatment. The complete layer-by-layer change log lives in Appendix A.
 
 ```
-12. Human Agency, Operating Model, and Regenerative Value
-11. Enterprise Applications and Experience
-10. Recursive Self-Adaptation and Learning
- 9. Observability, Evaluation, and Assurance
- 8. Governance, Identity, and Control Plane
- 7. Agent and Activity Runtime
- 6. Protocol and Capability Fabric
- 5. Memory and Context Assembly
- 4. Inference and Model Runtime
- 3. Model and Intelligence Layer
- 2. Data, Context, and Knowledge
- 1. AI Factory Infrastructure
- 0. Energy, Facilities, and Physical Infrastructure
+12. Human Agency, Operating Model, and Regenerative Value      [expanded]
+11. Enterprise Applications and Experience                     [reframed]
+10. Recursive Self-Adaptation and Learning                     [expanded]
+ 9. Observability, Evaluation, and Assurance                   [expanded]
+ 8. Governance, Identity, and Control Plane                    [expanded]
+ 7. Agent and Activity Runtime                                 [carried forward]
+ 6. Protocol and Capability Fabric                             [updated]
+ 5. Memory and Context Assembly                                [carried forward]
+ 4. Inference and Model Runtime                                [carried forward]
+ 3. Model and Intelligence Layer                               [carried forward]
+ 2. Data, Context, and Knowledge                               [carried forward]
+ 1. AI Factory Infrastructure                                  [carried forward]
+ 0. Energy, Facilities, and Physical Infrastructure            [carried forward]
 ```
 
-This is not a simple technology ladder. It is a living enterprise architecture. The lower layers provide physical and computational capacity. The middle layers provide intelligence, context, memory, protocols, and activity execution. The upper layers provide governance, proof, adaptation, human experience, operating model, and value realization. The design exists to prevent one recurring error: treating AI as a set of tools rather than a new operating system for work.
+## 4. Layers 0 to 5 and 7: The Carried-Forward Foundations
 
+These layers are stated in full in Version 1.0 and are summarized here so the stack reads as one document. Their logic did not change in the last six months, though the stakes on each rose as agents began to act.
 
-## 4. Layer 0: Energy, Facilities, and Physical Infrastructure
+**Layer 0, Energy, Facilities, and Physical Infrastructure.** AI starts with physical reality, and the scale remains large. The International Energy Agency still projects global data center electricity consumption more than doubling to roughly 945 TWh by 2030, with AI as the most important driver (International Energy Agency, 2025). The question is whether the enterprise can secure reliable, scalable, and responsible physical capacity for its workloads.
 
-AI starts with physical reality. Energy, land, cooling, buildings, fiber, substations, data center locations, water availability, power purchase agreements, and physical security all shape what AI can become. The scale is no longer marginal. The International Energy Agency projects that global data center electricity consumption will more than double to roughly 945 TWh by 2030, slightly more than Japan consumes today, with AI as the most important driver of that growth (International Energy Agency, 2025).
+**Layer 1, AI Factory Infrastructure.** Physical capacity becomes computational production across accelerators, networking, storage, orchestration, and cloud, private, edge, and sovereign placement. The question is where computation runs and how capacity is governed across those environments.
 
-Most enterprises consume this layer through cloud providers, colocation facilities, or managed partners, yet leaders can no longer treat it as invisible. AI workloads concentrate power demand, require resilient facilities, and create new supply chain dependencies. Enterprises with heavy workloads must understand where computation runs, what physical risks exist, how energy costs shape unit economics, and how sustainability commitments are affected by their choices.
+**Layer 2, Data, Context, and Knowledge.** Data alone is not enough; agents need governed context and knowledge, since an agent acting on an outdated contract or ambiguous policy acts with confidence while being wrong. The most important word in the autonomous-enterprise conversation is not agent but context (Reddy, 2026d). The question is what is true, what it means, where it came from, and who may use it.
 
-> *Strategic question.* **Can the enterprise secure reliable, scalable, and responsible physical capacity for its AI workloads?**
+**Layer 3, Model and Intelligence Layer.** Enterprises operate model portfolios with risk tiers and lifecycle controls rather than a single-model choice, a point reinforced by capability commoditization. The question is which intelligence capability fits the task, risk, data context, authority envelope, and cost.
 
+**Layer 4, Inference and Model Runtime.** Serving, routing, caching, and fallback determine whether a system is commercially viable, and routing remains a control surface as much as a performance lever. The question is how to serve, route, optimize, and control execution at production scale.
 
-## 5. Layer 1: AI Factory Infrastructure
+**Layer 5, Memory and Context Assembly.** Memory is not storage and context assembly is not retrieval; the layer decides what the system remembers, forgets, and carries into action, across session, user, domain, operational, decision, policy, and adaptation memory. The question is what context the system carries into action, and under what authority.
 
-The AI factory layer turns physical capacity into usable computational production. The phrase is useful because it captures what modern AI actually does. Enterprises are no longer merely running applications. They are producing predictions, embeddings, generated content, decisions, plans, actions, and synthetic artifacts at scale, and that production system must be designed, operated, secured, monitored, and economically governed.
+**Layer 7, Agent and Activity Runtime.** Intelligence becomes work across people, systems, documents, approvals, cases, and exceptions, not merely tool calls. The enterprise does not need autonomy everywhere; some work is advisory, some delegated, some human-led, and some should never be automated. The question is how intelligence becomes coordinated work across humans, agents, workflows, and systems.
 
-**This layer includes:** accelerators, CPUs, memory, high-speed networking, storage, orchestration, virtualization, containers, cluster management, edge infrastructure, sovereign infrastructure, and cloud regions, along with decisions about public, private, hybrid, and specialized AI clouds, data locality, capacity reservation, accelerator utilization, network topology, and workload placement.
+## 5. Layer 6: Protocol and Capability Fabric
 
-> *Strategic question.* **Where should AI computation run, and how should capacity be governed across cloud, private, edge, and sovereign environments?**
+*Updated in v2.0: the connection layer matured and went neutral.*
 
+Models and agents need structured ways to discover tools, data, workflows, and other agents. In Version 1.0 this layer was described as emerging. In Version 2.0 it has matured into shared infrastructure, which is precisely why it stopped being a place to win and became a place everyone builds on.
 
-## 6. Layer 2: Data, Context, and Knowledge
+The protocol for connecting agents to tools and data now sits under a neutral, multi-party foundation, with more than ten thousand published servers and SDK adoption in the tens of millions of downloads per month (Linux Foundation, 2025; Model Context Protocol, 2025). The standard also hardened where enterprises needed it. A 2025 revision formalized servers as OAuth 2.1 resource servers and mandated resource indicators to prevent token misuse, a public registry launched for discovery, and a late-2025 specification added asynchronous tasks, server identity, elicitation, server-side agent loops, client identity through metadata documents, and an extensions system (Model Context Protocol, 2025). These are the features that turn a developer convenience into enterprise infrastructure.
 
-This is among the most important layers in the stack. Data alone is not enough. Enterprises need context and knowledge. They need to know what a data element means, which source is authoritative, where the data came from, which business definition applies, which policy governs its use, which lineage can be trusted, and which domain relationships matter.
+The complementary standard for agent-to-agent coordination defines an agent card that advertises capability, a task with a defined lifecycle, a message exchanged between parties, and an artifact returned as output. It was placed under neutral foundation governance in mid-2025 and passed 150 organizations within a year, with a related agent-communication protocol merging into it (A2A Project, 2025; Reddy, 2026j). One standard connects an agent to its tools; the other connects an agent to other agents; both are now neutral ground.
 
-**This layer includes:** data platforms, warehouses, lakehouses, streaming pipelines, catalogs, semantic layers, ontologies, knowledge graphs, lineage, data quality, master data management, data contracts, document stores, vector stores, and domain knowledge bases.
+**This layer includes:** tool and context servers and registries, agent cards, OAuth resource servers and scoped tokens, tool and skill catalogs, workflow and schema registries, connector gateways, service discovery, API and event contracts, and capability advertisements that also describe constraints, permissions, cost, risk, expected outputs, and proof obligations.
 
-In analytics, poor context produces poor reports. In agentic AI, poor context produces poor action. An agent working from an outdated contract, an incomplete customer record, an ambiguous policy, or an untrusted document may act with confidence while being wrong. The enterprise must therefore distinguish raw data, governed data, business context, operational knowledge, and decision memory, because each plays a different role in the chain from signal to action.
+The architectural consequence is the central move of this revision. Because the connection layer is open and neutral, it cannot be owned, so the contested value moved up to the governance of action. The capability fabric is now the floor that the governed-action layer stands on.
 
-> *Strategic question.* **What is true, what does it mean, where did it come from, and who is allowed to use it?**
+> **Strategic question.** How do agents, models, tools, workflows, and systems discover and use each other under explicit contracts, on shared and neutral protocols?
 
+## 6. Layer 8: Governance, Identity, and Control Plane
 
-## 7. Layer 3: Model and Intelligence Layer
+*Expanded in v2.0: agent identity became concrete and the control plane became the battlefield.*
 
-The model layer supplies reasoning, prediction, generation, classification, perception, planning, translation, simulation, and multimodal capability. This is not a single-model decision. Enterprises will operate model portfolios, because some tasks need frontier reasoning, some need low-cost classification, some need private deployment, some need domain tuning, and some need deterministic rules rather than generative reasoning.
+Governance is the layer that turns AI from clever automation into enterprise infrastructure, and in the last six months it stopped being abstract. The unit of governance moved from the model to the actor. An enterprise agent may use several models, access internal systems, call external tools, coordinate with other agents, and recommend, approve, reject, negotiate, escalate, or execute. Governing it means governing machine behavior, which is a different responsibility than governing software outputs (Reddy, 2026e).
 
-**This layer includes:** frontier models, open-weight models, domain-specific and small language models, embedding models, rerankers, speech and vision models, time-series, graph, and simulation models, and traditional machine learning models.
+Agent identity became concrete rather than aspirational. The leading identity and workplace platforms now issue each agent its own identity, so that permissions, conditional access, and data-loss policies attach to the agent the way they attach to an employee, and the value of doing so showed up immediately. In one widely cited case, an enterprise that turned on agent-scope policies discovered that several of its agents held permission to delete files that no one had intended to grant (Reddy, 2026i). The connection protocols moved the same direction, with client identity through metadata documents and session-scoped authorization that expires when a task ends and cannot be renewed without a human (Model Context Protocol, 2025).
 
-A portfolio needs a strategy. That strategy should define approved models, risk tiers, data handling rules, deployment patterns, evaluation criteria, fallback models, lifecycle management, and cost controls. Without it, model choice drifts to whoever wired the last integration, and risk accumulates silently.
+Standards bodies followed. The NIST AI Risk Management Framework and its Generative AI Profile remain the foundation (National Institute of Standards and Technology, 2023; Autio et al., 2024), and in early 2026 NIST's Center for AI Standards and Innovation announced an AI Agent Standards Initiative to address the governance gap that agents create when they acquire tool use and act autonomously in production (National Institute of Standards and Technology, 2026). Research on authenticated delegation continues to argue that authority should be explicitly delegated, agents should be identifiable, and delegated actions should produce records that support audit rather than after-the-fact guesswork (South et al., 2025).
 
-> *Strategic question.* **Which intelligence capability is appropriate for this task, risk level, data context, authority envelope, and cost profile?**
+**This layer includes:** agent, human, and workload identity, delegated authority, role-based and attribute-based access control, policy engines, approval gates, audit trails, compliance controls, model risk practices, data residency and content-safety controls, session-scoped and revocable authorization, and emergency brakes.
 
+A governed agent must carry an authority envelope that defines what it may do and may not do, which tools and data it may reach, which outputs require review, which actions require human approval, and which conditions force escalation or shutdown. Version 2.0 promotes five questions to canonical status, because every control plane in the market is in the end an attempt to answer them for every agent it runs: who is acting, under what authority, toward what objective, within what boundaries, and with what evidence trail (Reddy, 2026e).
 
-## 8. Layer 4: Inference and Model Runtime
+The strategic reframing matters as much as the mechanics. The control layer is not only a safety mechanism. It is what makes autonomy usable at enterprise scale and what preserves strategic intent, because the objective an agent optimizes is an expression of strategy and the policy boundaries are where a company keeps itself distinct from competitors converging on the same generic optimum (Reddy, 2026e).
 
-Inference is where AI becomes operational. Every production interaction requires model serving, routing, caching, latency management, context window management, token cost control, accelerator utilization, fallback behavior, and reliability. Inference design is what determines whether a system is commercially viable rather than merely impressive.
+> **Strategic question.** Who or what is allowed to act, under what authority, toward what objective, within what boundaries, with which controls, and with what evidence trail?
 
-**This layer includes:** model gateways, inference servers, routing engines, prompt and context optimization, caching, batching, streaming, quantization, rate limiting, fallback models, serving endpoints, and performance monitoring.
+## 7. Layer 9: Observability, Evaluation, and Assurance
 
-A system that dazzles in a demo can still fail in production when latency runs high, cost per task is unsustainable, routing is weak, context windows overflow, or fallbacks are undefined. Inference also carries a governance dimension. A low-cost model may be fine for internal summarization and entirely inappropriate for a regulated decision, so routing is a control surface, not only a performance lever.
+*Expanded in v2.0: agent observability standardized, and simulation joined evaluation.*
 
-> *Strategic question.* **How should the enterprise serve, route, optimize, and control model execution at production scale?**
+Agentic systems retrieve context, reason across steps, call tools, delegate, interact with humans, and produce artifacts, so observability must reach prompts, model calls, retrieved context, tool invocations, agent decisions, approvals, policy checks, costs, latency, errors, refusals, fallbacks, outputs, and outcomes. Two developments since Version 1.0 deepen this layer.
 
+First, agent observability standardized. The OpenTelemetry semantic conventions for generative AI now cover not only model calls and token counts but agent spans, tool execution, and the agent-to-tool protocol itself, so a single trace can link an agent's decision through tool calls to a final result across heterogeneous systems (OpenTelemetry, 2025). This is the vendor-neutral instrumentation that delegation-aware audit requires (South et al., 2025). Platform vendors now market a single audit record across every process and command centers for agent health, which is the same idea expressed as product (Reddy, 2026f).
 
-## 9. Layer 5: Memory and Context Assembly
+Second, simulation joined evaluation as a first-class discipline. Because agent behavior varies with input, context, model, tool choice, and process state, testing before production now means simulating success paths, failure cases, timeouts, edge cases, policy conflicts, incomplete data, unauthorized actions, tool failures, low-confidence reasoning, and downstream impact. Process simulation is the trust bridge between pilot and production, and it lets organizations replay incidents afterward as well (Reddy, 2026f). Evaluation, simulation, and assurance together answer whether the system works as intended, whether risk sits inside tolerance, and whether the organization can prove what happened.
 
-Memory is not the same as storage, and context assembly is not the same as retrieval. This layer decides what the system remembers, retrieves, compresses, prioritizes, ignores, forgets, and passes into reasoning or action. It is where a great deal of an agent's real behavior is determined, well before any model call is made.
+In regulated settings this layer is the product, not a feature. The lesson from autonomous risk intelligence in financial crime is blunt: in a regulated context, auditability is the product, because the value is not only that an agent can recommend but that the institution can reconstruct which model ran, what data it saw, which scenario contributed, what an investigator accepted or overrode, and explain all of it to a regulator months later (Reddy, 2026c).
 
-**This layer includes:** retrieval-augmented generation, embeddings, vector search, semantic retrieval, context compression, session and user memory, domain and enterprise memory, operational and decision memory, source ranking, provenance, and policy-aware retrieval.
+> **Strategic question.** Can the enterprise see, test, simulate, explain, audit, and improve AI behavior across steps, and prove what happened?
 
-A mature architecture supports several memory types, each with a distinct purpose. The table below names the types that recur across enterprise deployments.
+## 8. Layer 10: Recursive Self-Adaptation and Learning
 
-| Memory type | Purpose |
+*Expanded in v2.0: grounded in systems engineering and operated by ADAM, the Adaptive Development and Assurance Machine, with a five-level maturity model.*
+
+Recursive Self-Adaptation is the governed counterpart to uncontrolled recursive self-improvement. A system may improve its instrumental structures, its prompts, retrieval, tool selection, thresholds, workflow patterns, evaluation tests, memory rules, and routing, while preserving its constitutional commitments, its mandate, identity, human authority, policy, and safety constraints. Version 2.0 grounds that distinction in systems engineering and names the constraint that makes it real.
+
+Every complex system runs on two kinds of loops. Reinforcing loops amplify change and balancing loops hold it in check, and a system that lasts needs both. Recursive self-improvement hands the reinforcing loop over for free, because better systems help build better systems. The balancing loop is the part that must be designed on purpose, and it is the part that decides whether amplification stays ahead of understanding or runs past it (Reddy, 2026h). The governance loop in this layer is that balancing loop made operational.
+
+This layer is the operating core of what the 451 canon now calls ADAM, the Adaptive Development and Assurance Machine, which supersedes the earlier learning-cycle framing (Reddy, 2026k). ADAM fuses two halves that an adaptive system cannot keep apart. Adaptive Development is the loop that learns from production and feeds that learning back into the build. Assurance is the function that brakes the loop so it cannot run away, delivered by a control function called the Governor. The loop is the engine that many teams are about to build; the Governor is the brake that lets the engine run unattended, and it is the harder and scarcer half.
+
+The deeper lesson of 2026 is that the bottleneck moved. Generation became cheap while verification did not, so judgment became the scarce resource. When a system can generate change faster than anyone can review it, the constraint is no longer capability but proof: a clear account of what changed, what evidence drove it, which metrics improved, which risks were checked against them, who reviewed it, under which policy, and which tests confirmed the system did not get better in one place by getting worse in another (Reddy, 2026h). In regulated environments this is not optional. A model that cannot explain why it changed is a liability no matter how much it improved.
+
+So Version 2.0 adds a proof architecture to this layer. Every meaningful adaptation must leave a record that survives scrutiny, and the system may propose adaptation but may never authorize its own expansion of authority. The basic loop is unchanged, but the governance step is now explicitly the place where proof is demanded before any change publishes.
+
+```
+Observe  →  Sense  →  Propose  →  Govern (prove)  →  Apply  →  Monitor  →  Learn
+```
+
+The Governor delivers that proof, and it works at two speeds because the failures of an adaptive loop arrive on two timescales. The routine brakes are automated, since the failures they catch are too fast and too frequent for a person to catch reliably, and hidden feedback loops are the leading documented cause of failure in machine learning systems (Sculley et al., 2015). Above them sits one emergency brake that a human always holds and that the system can never countermand, which is the interruptibility principle stated plainly: an operator must always be able to understand, oversee, and stop the system (Shavit et al., 2023).
+
+| Routine brake (automated) | What it does |
 | --- | --- |
-| Session memory | Maintains continuity inside a single task or conversation. |
-| User memory | Preserves durable preferences and working context. |
-| Domain memory | Stores business concepts, rules, definitions, and ontologies. |
-| Operational memory | Records what happened during execution. |
-| Decision memory | Captures assumptions, evidence, approvals, and outcomes. |
-| Policy memory | Maintains rules, constraints, obligations, and exceptions. |
-| Adaptation memory | Stores proposed, approved, rejected, and applied system improvements. |
+| Drift halt | Pauses adaptation and reverts to last known-good when output quality or input distribution crosses a threshold. |
+| Evaluation gate | Blocks promotion of any self-update or model change that regresses on fixed proof criteria. |
+| Anomaly rollback | Rolls back to the previous version on a sharp behavioral anomaly and raises an alert. |
+| Action ceiling | Refuses any action, tool, or data access outside the granted scope, the direct control on excessive agency. |
+| Contamination filter | Quarantines feedback derived from the system's own outputs until reviewed, so the loop does not learn from its own exhaust. |
 
-Memory becomes dangerous when it is ungoverned. The enterprise must know what can be remembered, what must be forgotten, what can be reused, what is inferred, what is authoritative, and what must carry provenance. These are governance decisions wearing an engineering costume.
+The design rule is simple. Automate every brake that is fast, frequent, and well understood, and reserve for a human every brake that is consequential, ambiguous, or irreversible. The emergency brake is rarely pulled, and its value is that it always can be, which is why assurance discipline includes testing it on a schedule rather than trusting that it exists.
 
-> *Strategic question.* **What context should the system carry into action, and under what authority?**
+ADAM advances along two axes at once, how much of the loop is closed and automated, and how trustworthy the Assurance is. The rule across every level is that development automation may advance only as far as the Assurance can be trusted to stop it. An enterprise earns the next level of autonomy by proving the brake, not by proving the engine (Reddy, 2026k).
 
-## 10. Layer 6: Protocol and Capability Fabric
+| Level | Development and automation | Assurance state |
+| --- | --- | --- |
+| 1. Manual | Production learning fed back by hand, occasionally | A human watches dashboards. |
+| 2. Instrumented | The return path is captured in a memory and learning layer | Manual rollback exists and is tested. |
+| 3. Auto-braked | Routine adaptation is automated | Drift halt, evaluation gate, and rollback run automatically. |
+| 4. Governed autopilot | Most of the loop runs unattended | Full Governor active, emergency brake human-held. |
+| 5. Recursive, bounded | The machine proposes its own design changes | Governor gates every self-update; expansion needs human sign-off. |
 
-Models and agents need structured ways to discover tools, data, workflows, systems, and other agents. That is the role of the protocol and capability fabric. The Model Context Protocol matters here because it standardizes how applications provide context and tool access: resources provide data and context, prompts provide templated messages and workflows, and tools provide functions the model can execute against external systems (Model Context Protocol, 2025).
+The practical rule follows from the systems view. The systems worth worrying about are the ones that change faster than anyone can prove they should, so the adaptation loop must be paced to the speed at which its changes can be verified, not the speed at which they can be generated.
 
-The Agent2Agent protocol addresses the complementary problem of how agents coordinate with one another. Its specification rests on four elements: an agent card that advertises capability, a task with a defined lifecycle, a message exchanged between parties, and an artifact returned as output, with support for status updates and streaming (Google, 2025; A2A Project, 2025). MCP connects an agent to its tools; A2A connects an agent to other agents, and most production multi-agent systems will use both.
+> **Strategic question.** How can the system improve itself while preserving human authority and policy boundaries, and prove that each change is safe before it applies?
 
-**This layer includes:** MCP servers, A2A agent cards, tool registries, skill catalogs, workflow and schema registries, connector gateways, service discovery, API and event contracts, and capability advertisements.
+## 9. Layer 11: Enterprise Applications and Experience, and the Interface as Strategy
 
-This layer should not stop at technical interfaces. A useful capability fabric also describes constraints, permissions, cost, risk, expected outputs, and proof obligations, so that discovery is bound to governance rather than divorced from it.
+*Reframed in v2.0: the interface is the coordination point, and pricing moved toward outcomes.*
 
-> *Strategic question.* **How do agents, models, tools, workflows, and systems discover and use each other under explicit contracts?**
+This layer is where AI meets employees, customers, partners, regulators, and operators through copilots, conversational interfaces, embedded assistants, and workflow and service agents. Version 2.0 reframes it around a sharper idea: in every value chain there is one point everyone must pass through, and that point is where durable power settles (Reddy, 2026j).
 
+After capability stops being scarce, the experience that matters is not the cleverest interaction but the most dependable coordination. The layer where a capable model becomes a trusted, repeatable, governable action is the interface worth owning, and it learns from use, because every governed action it records sharpens its policy, its risk posture, and its proof. Accountability has an unusual structural property here: a model provider cannot credibly grade its own agents and a single platform cannot neutrally certify the agents that compete with its own, which is exactly the gap a neutral position can occupy (Reddy, 2026j).
 
-## 11. Layer 7: Agent and Activity Runtime
+The economics moved with the architecture. Pricing is shifting from per-seat licensing toward charging for work the agent completes, which makes governed action the precondition for the outcome economy rather than a feature bolted onto it. No one will pay for a guaranteed outcome that cannot be audited, bounded, or reversed, so the experience layer and the governance layer are two views of the same thing (Reddy, 2026i).
 
-The agent runtime is where intelligence becomes work. The word activity is deliberate. Enterprise work is not simply tool calling. It happens across people, systems, documents, conversations, approvals, cases, records, controls, and exceptions. An agent that can call tools but cannot operate inside that activity system remains a demo.
+Experience design still depends on role, context, trust, authority, and risk, and a polished interface still cannot compensate for weak context, unclear authority, or missing observability. What Version 2.0 adds is that the interface is a strategic position, not a presentation layer.
 
-**This layer includes:** agent loops, planning, task decomposition, tool use, workflow execution, human review, event handling, case management, approvals, retries, exception handling, and artifact creation.
+> **Strategic question.** Does AI meet people and other systems at the coordination point in the flow of work, dependably enough to sell the outcome and not only the tool?
 
-It must answer practical questions in production. Who owns the task and which agent is acting, which tools are available, which system of record may be modified, and which human must approve? Which artifact is produced, what happens on failure, what gets logged, what gets escalated, and what gets learned?
+## 10. Layer 12: Human Agency, Operating Model, and Regenerative Value
 
-Crucially, the enterprise does not need autonomy everywhere. Some activities should be advisory, some can be delegated, some require human approval, some should remain human-led, and some should never be automated. The runtime is where those choices are made concrete and enforced.
+*Expanded in v2.0: the AI-Native Architect, the ADAM machine, and access versus agency.*
 
-> *Strategic question.* **How does intelligence become coordinated work across humans, agents, workflows, and systems?**
+The final layer is where AI either strengthens the enterprise or hollows it out. Version 1.0 argued that human agency must be designed into the architecture rather than left to culture. Version 2.0 names the human role that does the designing and the loop that role governs.
 
+The role is the AI-Native Architect, the person who designs where intelligence lives, what an agent may do, where humans stay accountable, and how the system learns without losing trust (Reddy, 2026b). The archetype sits beneath the senior technology executive who defines the intelligence architecture of the enterprise, and alongside the leadership posture that governs living systems of human and machine intelligence without surrendering judgment (Reddy, 2026g). As AI compresses coordination cost and thins mid-management, the individual contributor increasingly operates as an outcome node supported by a cluster of agents, and the scarce skill shifts from running people to designing the system they and their agents work inside (Reddy, 2025d). Leverage without architecture is instability with better margins, which is why this role is structural rather than optional.
 
-## 12. Layer 8: Governance, Identity, and Control Plane
+The machine is ADAM, the Adaptive Development and Assurance Machine, which replaces the linear software development lifecycle for agentic work and supersedes the earlier learning-cycle framing (Reddy, 2026k). Its forward path builds the system through five moves, Signal, Shape, Build, Prove, and Govern, each with a decision gate. Its return path closes production back into design, so the next version is shaped by what the last version actually did. Its Governor brakes the whole loop. ADAM is the human-facing expression of the two loops in Part III, and the AI-Native Architect is the role accountable for it, including the one override a human always holds.
 
-Governance is the layer that turns AI from clever automation into enterprise infrastructure. It cannot live only in policy documents, model cards, steering committees, or quarterly reviews. It must operate at runtime. Agents need identity, tools need permissions, data access must be enforced, workflows need approval gates, actions must be bounded, exceptions must be escalated, receipts must be created, and brakes must exist.
+Version 2.0 also sharpens what is at stake for people. Access to AI is becoming widespread, but access to a tool is not the same as agency over a system. A worker can use a capable assistant and still be screened by an opaque hiring model, priced by an opaque claims engine, or ranked by a system they cannot inspect, so the deepest inequality of this era is the gap between those who shape intelligent systems and those whose lives are shaped by systems they cannot contest (Reddy, 2025b). The same record that lets a board audit an agent is the record that lets an employee or customer challenge one, which means governed action and accountable agency are the same architecture seen from two directions.
 
-Established frameworks give this work a foundation. The NIST AI Risk Management Framework provides a general structure for managing AI risk (National Institute of Standards and Technology, 2023), and the companion Generative AI Profile identifies risks specific to generative systems and maps suggested actions to organizational goals and priorities (Autio et al., 2024). Agentic AI raises the urgency, because agents combine reasoning, tool use, delegated authority, and multi-step execution in ways those documents anticipated only in part.
+**This layer includes:** AI strategy, portfolio governance, the AI-Native Architect role, process and role redesign, decision rights and override mechanisms, workforce development, the ADAM operating machine and its human-held emergency brake, value measurement, delegation architecture owned at board level, risk ownership, funding models, and the due-process structures that let affected people contest automated outcomes.
 
-**This layer includes:** agent identity, human identity, and workload identity, delegated authority, role-based and attribute-based access control, policy engines, approval gates, audit trails, compliance controls, model risk practices, data residency controls, content safety controls, and emergency brakes.
+ADAM makes the short list of human-owned decisions explicit, so that automation stops exactly where accountability begins. A human owns the decision to release into a context where the system can act on money, customers, compliance, or brand; the acceptance of risk when proof is incomplete and the deployment proceeds anyway; any expansion of the system's authority or action space; the emergency brake; and the integrity of the return path, the judgment of whether captured learning is real or contaminated. Everything else can run on agents. These few decisions are where accountability lives, and accountability does not delegate to a machine that adapts (Reddy, 2026k). The human-factors record is blunt about why this holds even when the machine is good, because the dominant failure of capable automation is overreliance, where operators stop monitoring a system they have come to trust (Parasuraman & Riley, 1997).
 
-A governed agent must carry an authority envelope. That envelope defines what it may do and may not do, which tools it may use, which data it may access, which outputs require review, which actions require human approval, and which conditions force escalation or shutdown. Recent work on authenticated delegation argues for exactly this: authority should be explicitly delegated to agents, agents should be identifiable, and delegated actions should produce records that support auditing rather than vague after-the-fact reconstruction (South et al., 2025).
+Delegation, finally, is a boardroom matter. Once agents influence pricing, credit, hiring, compliance, capital allocation, or clinical workflow, boards need visibility into which categories of decision are delegated, under what authority, with what controls, and with what evidence of oversight, because the algorithm did it will not be an adequate defense and the burden will shift toward demonstrable governance (Reddy, 2026e).
 
-> *Strategic question.* **Who or what is allowed to act, under what authority, with which controls, and with what proof?**
+> **Strategic question.** Did intelligence become trusted action, did it expand human agency and enterprise capacity rather than deplete them, and can the people it affects contest it?
 
+# Part III: Operating Planes and Loops
 
-## 13. Layer 9: Observability, Evaluation, and Assurance
+## 11. The Cross-Cutting Operating Planes
 
-Enterprise AI must be observable, and this is especially true of agentic systems, which retrieve context, reason across steps, call tools, delegate tasks, interact with humans, and produce artifacts. Observability must reach prompts, model calls, retrieved context, tool invocations, agent decisions, human approvals, policy checks, costs, latency, errors, refusals, fallbacks, outputs, and outcomes.
+The seven planes carry forward from Version 1.0 and cut across every layer. Three of them gained weight in the last six months and are updated here; the others, FinOps, Resilience, and Human Agency, are unchanged in logic and are stated briefly.
 
-Open standards are converging on this need. The OpenTelemetry semantic conventions for generative AI standardize visibility into model calls, token counts, prompts, completions, tool calls, and tool results when content capture is enabled, which gives enterprises a vendor-neutral way to instrument behavior (OpenTelemetry, 2025). The same instrumentation discipline supports delegation-aware records, so that an organization can reconstruct what happened across tools and systems rather than guessing (South et al., 2025).
+### 11.1 Security Plane, updated
 
-Evaluation must evolve alongside observability. Traditional software testing is insufficient for probabilistic, tool-using, multi-step systems. Enterprises need offline evaluations, online monitoring, regression tests, red-team tests, groundedness checks, tool-use accuracy, task success metrics, safety evaluations, policy compliance checks, and business outcome measures. Assurance then connects observability and evaluation to governance, asking whether the system works as intended, whether risk sits inside tolerance, whether controls are effective, and whether the organization can prove what happened.
+The OWASP Top 10 for LLM Applications still names prompt injection as the leading risk and excessive agency as a distinct one, and the agentic year made both concrete (OWASP, 2025). Security must now account for agent identity, insecure tool use, sensitive-data exposure, poisoned context, unauthorized delegation, and unsafe action chains, with session-scoped and revocable authority as a primary control rather than an afterthought. The same identity work that governs an agent is the work that secures it.
 
-> *Strategic question.* **Can the enterprise see, test, explain, audit, and improve AI behavior in production?**
+### 11.2 Governance Plane, reframed as strategic
 
+Governance must reach data, models, memory, protocols, tools, agents, workflows, humans, and outcomes, and a policy that cannot influence retrieval, tool access, authority, routing, or execution is documentation. Version 2.0 adds that governance is also where strategy is protected, since the objective function an agent optimizes and the boundaries it respects are how a company stays recognizably itself while competitors converge (Reddy, 2026e). Strategic divergence becomes a governed asset rather than an accident of human inconsistency.
 
-## 14. Layer 10: Recursive Self-Adaptation and Learning
+### 11.3 FinOps, Resilience, and Human Agency Planes, carried forward
 
-Recursive Self-Adaptation is the dynamic layer missing from most enterprise AI architectures. The enterprise cannot treat AI as static automation, because the ground keeps moving.
+The FinOps plane keeps agents from becoming financially unbounded across tokens, inference, routing, retries, and tool calls. The Resilience plane keeps the system operating safely under failure through fallbacks, graceful degradation, human takeover, and rollback. The Human Agency plane asks, of every layer, whether the system makes people more capable or more dependent, preserves judgment, explains itself, allows override, and protects dignity and accountability.
 
-Models change, tools change, data changes, policies change, workflows change, user behavior changes, markets change, and threats change.
+### 11.4 Recursive Self-Adaptation Plane, carried forward with a hardened rule
 
-A governed system must adapt to all of that, and at the same time it must not be free to rewrite its own mandate, authority, policy, or safety envelope. Recursive Self-Adaptation is the governed counterpart to uncontrolled recursive self-improvement. It lets a system improve its instrumental structures while preserving its constitutional commitments, and that distinction is the entire point.
+Every layer emits adaptation signals, from cost and quality to accuracy, execution, judgment, exceptions, and value. The plane turns those signals into governed improvement and enforces one rule without exception: the system may propose adaptation, but it may not unilaterally expand its own authority. Version 2.0 adds that no adaptation publishes without proof.
 
-A recursively self-improving system might try to improve itself without clear external authority. A recursively self-adapting enterprise system operates inside a fixed objective and authority envelope. It may propose changes to prompts, retrieval strategies, tool selection, thresholds, workflow patterns, evaluation tests, memory promotion rules, or sub-agent routing. It may not authorize changes to its mandate, identity, human authority, policy, safety constraints, or governance controls. The basic loop makes the boundary explicit.
+### 11.5 Regeneration Plane, upgraded to a leverage discipline
 
-```
-Observe  →  Sense  →  Propose  →  Govern  →  Prove  →  Apply  →  Monitor  →  Learn
-```
+Regeneration asks whether each cycle of activity renews or depletes the enterprise across human capability, trust, knowledge, process health, capital discipline, resilience, stakeholder value, and environmental responsibility. Version 2.0 grounds the plane in a leverage discipline, Regenerative Systems Thinking, which extends Donella Meadows's leverage points to twenty-one and adds a level of Agentic Intelligence Levers: agency and autonomy, intent alignment, learning and model evolution, human sovereignty, and interoperability and protocols (Reddy, 2025f; Meadows, 1999). These map directly onto the governance, adaptation, human-agency, and protocol layers of this stack.
 
-The loop has two parts. The inner adaptation loop observes performance, senses gaps, proposes improvements, and learns from outcomes. The outer governance loop decides whether a proposed adaptation is allowed, safe, reversible, measurable, and aligned with policy, and it must remain outside the system's self-authorizing control. Adaptation can touch many parts of the stack, as the examples below show.
+The plane also inherits the operating spine of the Regenerative Prosperity Model: five domains, Self, Community, Design, Nature, and Capital, connected by trust, verified by proof, and renewed through stewardship (Reddy, 2025e). Read against the era of governed action these are not soft ideas. Trust is what a control plane is for, proof is what an audit record produces, and stewardship is the difference between an enterprise that compounds capability and one that optimizes itself hollow. Regeneration is what keeps governed action from becoming extraction with better margins.
 
-| Adaptation target | Example |
-| --- | --- |
-| Retrieval | Change source ranking after repeated groundedness failures. |
-| Prompting | Improve task instructions after recurring ambiguity. |
-| Tool selection | Prefer more reliable tools for a class of work. |
-| Workflow | Add an approval step after a risk pattern appears. |
-| Evaluation | Create new tests after a failure mode is discovered. |
-| Memory | Promote validated lessons and reject noisy feedback. |
-| Routing | Send high-risk tasks to stronger models or to humans. |
-| Cost | Shift low-risk work to cheaper models after validation. |
-| Controls | Tighten authority after unsafe behavior is detected. |
+## 12. The Two-Loop Architecture and ADAM
 
-This layer is where enterprise AI moves from deployment to evolution. It gives the organization a way to learn from production without surrendering control of the things that must not change.
-
-> *Strategic question.* **How can the system improve itself while preserving human authority, policy boundaries, safety constraints, and proof obligations?**
-
-
-## 15. Layer 11: Enterprise Applications and Experience
-
-This is where AI becomes visible to employees, customers, partners, regulators, and operators. It spans copilots, conversational interfaces, embedded AI inside enterprise software, workflow and service agents, finance and sales assistants, developer agents, analytics copilots, field operations assistants, and vertical applications.
-
-Experience design must account for role, context, trust, authority, and risk. An executive assistant needs a different interaction model than a claims agent. A customer-facing agent needs tighter controls than an internal brainstorming assistant. A regulated workflow agent needs stronger receipts than a productivity copilot. The interface is where trust boundaries are felt, so it cannot be an afterthought.
-
-The application layer succeeds only when the layers beneath it are sound. A polished interface cannot compensate for weak context, unclear authority, poor evaluation, missing observability, or unmanaged adaptation. Good experience is the visible result of good architecture, not a substitute for it.
-
-> *Strategic question.* **How does AI meet people in the flow of work while preserving trust, context, agency, and control?**
-
-
-## 16. Layer 12: Human Agency, Operating Model, and Regenerative Value
-
-The final layer is human agency and operating model. This is where AI either strengthens the enterprise or hollows it out. Human agency means people remain capable of judgment, choice, accountability, creativity, care, and moral responsibility, and in enterprise AI this cannot be left to culture alone. It must be designed into the architecture.
-
-Human agency requires clear decision rights, meaningful override mechanisms, transparent explanations, appropriate skill development, role redesign, feedback channels, and accountability structures. People should not become passive approvers of machine output. They should become stronger sensemakers, stewards, designers, reviewers, and decision-makers, which is a higher bar than the one most automation programs aim for.
-
-**This layer includes:** AI strategy, portfolio governance, product ownership, process and role redesign, workforce development, adoption, training, value measurement, change management, risk ownership, funding models, vendor management, executive governance, and board oversight.
-
-This is also where regenerative value becomes visible. A mature enterprise AI system should not merely cut headcount or accelerate throughput. It should renew the enterprise's capacity to think, learn, decide, serve, adapt, and create durable value over time. That renewal, not the count of automated tasks, is the measure that matters at this layer.
-
-> *Strategic question.* **Did intelligence become trusted action, and did trusted action expand human agency, enterprise capacity, and regenerative value?**
-
-
-## 17. The Cross-Cutting Operating Planes
-
-A layered stack is not enough on its own. Enterprise AI also needs operating planes that cut across every layer, because some concerns cannot be confined to a single tier. These planes are what let the architecture behave as a living system rather than a static diagram.
-
-### 17.1 Security Plane
-
-The security plane spans zero trust, identity, secrets management, secure tool invocation, data loss prevention, prompt injection defense, supply chain security, runtime threat monitoring, adversarial testing, and incident response. The OWASP Top 10 for LLM Applications names prompt injection as the leading risk for the second consecutive edition, precisely because models process instructions and data in the same channel, and it names excessive agency as a distinct risk when agents hold too much authority or too many tools (OWASP, 2025). In agentic systems, security must also account for insecure tool use, sensitive data exposure, poisoned context, malicious documents, unauthorized delegation, and unsafe action chains.
-
-### 17.2 Governance Plane
-
-The governance plane defines policies, decision rights, approval gates, risk tiers, audit requirements, compliance obligations, escalation paths, and accountability structures. It must operate across data, models, memory, protocols, tools, agents, workflows, humans, and outcomes. A policy that cannot influence retrieval, tool access, agent authority, approval routing, or action execution is documentation, not governance.
-
-### 17.3 FinOps and Resource Plane
-
-AI introduces new economics: tokens, inference latency, accelerator utilization, model routing, context size, vector search, tool calls, retries, evaluations, data movement, and energy use. The FinOps plane manages budgets, model selection, capacity planning, workload placement, caching, cost attribution, and value per task. Its job is to keep AI systems from becoming financially unbounded, which is a real failure mode once agents can retry and delegate at will.
-
-### 17.4 Resilience Plane
-
-AI systems fail in unfamiliar ways. Models hallucinate, context retrieval fails, tools time out, agents loop, providers throttle, costs spike, policies block actions, and users overtrust outputs. The resilience plane includes fallback models, graceful degradation, human takeover, rollback, incident response, scenario testing, and service-level objectives. Resilience here is not only uptime. It is the ability to keep operating safely under uncertainty.
-
-### 17.5 Human Agency Plane
-
-Human agency cuts across the full stack. It governs how people interact with AI, how they retain judgment, how they override systems, how they learn, and how they remain accountable. The plane asks a consistent set of questions of every layer: does the system make people more capable or more dependent, does it preserve meaningful judgment, does it explain itself well enough for responsible use, does it make override possible, does it help people learn from decisions, and does it protect dignity, skill, and accountability? Its purpose is to prevent AI from becoming a silent authority system inside the enterprise.
-
-### 17.6 Recursive Self-Adaptation Plane
-
-Although Recursive Self-Adaptation is a named layer, it also operates as a plane. Every layer generates adaptation signals. Infrastructure produces cost and performance signals, data produces quality signals, models produce accuracy and safety signals, agents produce execution signals, humans produce judgment signals, governance produces exception signals, and business outcomes produce value signals. The plane turns these signals into governed improvement, and it enforces one principle without exception.
-
-**The system may propose adaptation, but it may not unilaterally expand its own authority.**
-
-### 17.7 Regeneration Plane
-
-Regeneration is the broadest plane. In an enterprise context it does not mean environmental restoration alone. It means renewing the conditions that allow the enterprise to remain healthy, adaptive, trusted, and value-creating over time. The plane asks a single question across every dimension of the business: is AI renewing or depleting the enterprise?
-
-| Regenerative dimension | Enterprise meaning |
-| --- | --- |
-| Human capability | AI should improve skill, judgment, creativity, and agency. |
-| Trust | AI should increase transparency, accountability, and confidence. |
-| Knowledge | AI should capture, refine, and circulate institutional learning. |
-| Process health | AI should clarify and improve work rather than automate dysfunction. |
-| Capital discipline | AI should convert investment into durable capability, not tool sprawl. |
-| Resilience | AI should strengthen adaptability under stress. |
-| Stakeholder value | AI should create value for customers, employees, partners, and society. |
-| Environmental responsibility | AI should account for energy, infrastructure, and resource impacts. |
-
-Regeneration makes the architecture self-renewing. It is the discipline that keeps AI transformation from becoming extraction disguised as productivity, which is the precise outcome the thesis of this paper is written to prevent.
-
-
-## 18. The Two-Loop Architecture
-
-The Governed Enterprise AI Stack should operate through two loops that are connected but never collapsed. The first turns intelligence into work. The second improves how the work is performed.
-
-The first loop is the Decision-Action Loop.
+The stack runs on two loops that are connected but never collapsed, now mapped explicitly onto the human operating loop of Layer 12. The first turns intelligence into work.
 
 ```
 Sense  →  Contextualize  →  Reason  →  Act  →  Explain  →  Learn  →  Govern
 ```
 
-It senses signals, assembles context, reasons over options, acts through tools or workflows, explains what happened, learns from the outcome, and remains subject to governance throughout.
-
-The second loop is the Recursive Self-Adaptation Loop.
+The second improves how the work is performed, with proof demanded before any change applies.
 
 ```
-Observe  →  Sense  →  Propose  →  Govern  →  Prove  →  Apply  →  Monitor  →  Learn
+Observe  →  Sense  →  Propose  →  Govern (prove)  →  Apply  →  Monitor  →  Learn
 ```
 
-It observes the performance of the stack, senses recurring gaps, proposes adaptations, routes them through governance, proves safety and value, applies approved changes, monitors results, and learns. The governance boundary between the two loops is the critical design feature. A system that adapts its methods is valuable. A system that can rewrite its own mandate without human authority is dangerous, and the boundary is what keeps the first from becoming the second.
+ADAM, the Adaptive Development and Assurance Machine, is how a person builds and governs both loops at once (Reddy, 2026k). Its forward path produces the system, its return path feeds production learning back into the build, and its Governor brakes the whole loop.
 
+```
+Signal  →  Shape  →  Build  →  Prove  →  Govern    (forward path, each move gated)
+```
 
-## 19. Enterprise Readiness Checklist
+These are no longer separate phases handed between teams. They are one machine in which humans and agents both participate, and the AI-Native Architect is the role accountable for it. The governance boundary between adapting methods and rewriting mandate is the single most important design feature of the whole architecture. A system that adapts its methods is valuable. A system that can rewrite its own mandate without human authority is dangerous, and the Governor, expressed as proof plus a human-held emergency brake, is what keeps the first from becoming the second.
 
-The following checklist helps leaders assess maturity across the stack. Each question is deliberately blunt, because the value of the exercise is in the honest answer rather than the framework.
+# Part IV: Convergence on the Governed-Action Layer
 
-| Layer | Readiness question |
+## 13. How the Market Converged, by Strategy Archetype
+
+The clearest evidence for this architecture is that the market is building it from every direction at once. Rather than name companies, this section describes the strategy archetypes from which the governed-action layer is being approached, because the architecture should outlast any particular vendor's roadmap. Appendix B records each archetype with its center of gravity, control-plane move, and structural limit.
+
+The pattern is what matters. Each archetype reaches the governed-action layer from a different position of strength, and each can credibly claim only part of it. A provider anchored in the system of record knows business semantics best, a workflow platform governs cross-functional work best, an identity platform attaches policy to actors best, a customer-relationship platform knows customer context best, a model-and-cloud provider brings intelligence and scale together, and a cross-system execution platform reaches the messy work that lives across old screens, documents, and manual approvals (Reddy, 2026f; Reddy, 2026i). No single position can self-supply neutral accountability over agents that compete with its own, which is the structural opening this architecture is designed to fill (Reddy, 2026j).
+
+One execution-side architecture is worth abstracting as a pattern, because it captures the full operating model cleanly. It organizes autonomy into four layers: secure and manage at the bottom, reason and think above it, orchestrate and execute above that, and build and interact on top, with one audit record across every process and simulation before production (Reddy, 2026f). Read against this stack, those four layers compress its thirteen: control and identity at the base, intelligence and context in the middle, governed execution above, and human-facing outcomes on top. The convergence of independent architectures on the same shape is itself a confirmation of the shape.
+
+The honest read returns to the asymmetry. Broad execution reach is not deep domain understanding, deep domain understanding is not neutral accountability, and neutral accountability is exactly what no incumbent can grant itself. The contested whitespace is therefore the neutral governance of action across providers, which is the layer this reference architecture specifies and the reason it is written to belong to none of them.
+
+# Part V: Readiness, Implementation, and Standard
+
+## 14. Enterprise Readiness Checklist, Version 2.0
+
+The checklist carries forward and gains rows for the capabilities that became load-bearing in 2026: agent identity, simulation, outcome measurement, and the human architect role. It is written so an enterprise can score itself and any provider against the same neutral questions.
+
+| Layer or capability | Readiness question |
 | --- | --- |
 | Energy and physical infrastructure | Do we understand the physical, regional, energy, and resilience dependencies of our AI workloads? |
-| AI factory infrastructure | Do we have a clear strategy for public cloud, private cloud, edge, and sovereign AI deployment? |
-| Data, context, and knowledge | Do we know which data, definitions, and sources are authoritative? |
-| Model and intelligence | Do we have an approved model portfolio with risk tiers and lifecycle controls? |
-| Inference and runtime | Can we control latency, cost, routing, caching, and fallback behavior? |
+| Data, context, and knowledge | Do we know which data, definitions, and sources are authoritative, and is context governed? |
+| Model portfolio | Do we have an approved portfolio with risk tiers and lifecycle controls as capability commoditizes? |
 | Memory and context assembly | Can we govern what agents retrieve, remember, forget, and reuse? |
-| Protocol and capability fabric | Do we have standard ways for agents to discover tools, workflows, and other agents? |
-| Agent and activity runtime | Can agents operate inside real workflows, human approvals, and exception paths? |
-| Governance and control | Does every consequential agent have identity, authority, policy, audit, and brakes? |
-| Observability and assurance | Can we trace, evaluate, monitor, and prove AI behavior across steps? |
-| Recursive self-adaptation | Can the system improve safely without expanding its own authority? |
-| Applications and experience | Are AI experiences embedded in the flow of work with clear trust boundaries? |
-| Human agency and value | Does AI expand human capability, enterprise learning, and regenerative value? |
+| Protocol and capability fabric | Do we build on neutral, open protocols with OAuth, scoped tokens, and registries? |
+| Agent identity | Does every consequential agent have a distinct identity with scoped, revocable, session-bound authority? |
+| Governance and control plane | Can we answer, for every agent: who is acting, under what authority, toward what objective, within what boundaries, with what evidence? |
+| Observability and assurance | Can we trace agent steps on neutral conventions and keep one audit record across processes? |
+| Simulation | Do we simulate success, failure, edge, and policy-conflict paths before production, and replay incidents after? |
+| Recursive self-adaptation (ADAM) | Can the system improve without expanding its own authority, and does every change publish only with proof? |
+| Assurance and the Governor | Do routine brakes (drift halt, evaluation gate, rollback, action ceiling, contamination filter) run automatically, and is a human-held emergency brake tested on a schedule? |
+| Interface and outcomes | Do we own the coordination point well enough to price and stand behind completed outcomes? |
+| Human agency and architecture | Do we have AI-Native Architects, board-level delegation oversight, and a path for affected people to contest outcomes? |
 
+## 15. Implementation Path and the Regenerative Standard
 
-## 20. Strategic Implications for Enterprise Leaders
+The path from Version 1.0 holds and now runs as ADAM's forward path: Signal the constraint worth solving and the baseline to beat, Shape the workflow and the authority model and the proof criteria, Build to the approved design with logging and brakes present from the start, Prove the system earned the right to operate, and Govern it in production under the Governor (Reddy, 2026k). Version 2.0 adds two practical emphases. Bind the authority envelope to a distinct agent identity from the start, because identity is now the control surface the whole plane hangs on, and add a simulation gate before production, because behavior that varies with context cannot be trusted on the strength of a demo (Reddy, 2026f).
 
-The Governed Enterprise AI Stack changes the leadership conversation, and it changes it differently for each role at the table.
+The Govern move does not end the work; it opens the return path, so production becomes the richest source of design signal the system will ever have. Advance along the ADAM maturity model deliberately, from manual feedback to an instrumented return path to automated routine brakes to governed autopilot to a bounded recursive machine, and hold to the one rule that governs the whole climb: development automation may advance only as far as the Assurance can be trusted to stop it (Reddy, 2026k).
 
-**For CEOs,** AI is not a productivity initiative but a new operating architecture for the enterprise. The defining question is whether intelligence is improving cycle time, decision quality, customer value, resilience, and strategic adaptability, not how many pilots are running.
+The standard for judging the result is unchanged and now better supported by evidence. A mature enterprise AI architecture should be judged by whether it regenerates enterprise capability, not by how many agents it runs. It should make the enterprise clearer rather than more confused, people more capable rather than more dependent, processes simpler rather than more brittle, and governance more real rather than more performative. The pilots that failed across 2026 failed this test, not an intelligence test, which is why the regenerative standard and the governed-action layer are the same requirement stated twice (Gartner, 2025; MIT NANDA, 2025).
 
-**For CIOs and CTOs,** enterprise architecture matters again. AI requires a coherent structure across data, models, memory, protocols, agents, governance, observability, adaptation, and operating model, and incoherence at any tier surfaces as risk and cost everywhere else.
+There is also a strategic version of the standard that the agentic year made unavoidable. Governed autonomy asks whether delegated work stays aligned with the enterprise's purpose, risk posture, and competitive position, not merely whether work was done faster. A company that governs autonomy well remains unmistakably itself while its competitors optimize toward the same generic mean, and a company that does not will be fast, predictable, and eventually indistinguishable (Reddy, 2026e; van Esch et al., 2026).
 
-**For Chief AI Officers and data leaders,** context is the new control point. Proprietary data creates advantage only when it is governed, meaningful, retrievable, trusted, and connected to decisions.
+## 16. Conclusion: The Stack Ends at Governed, Regenerative Action
 
-**For CISOs and risk leaders,** agents create a new class of delegated digital actors that need identity, access control, policy enforcement, threat monitoring, incident response, and explicit authority boundaries (OWASP, 2025; South et al., 2025).
+Energy powers compute, compute serves models, and models reason over context. Context flows through memory, memory informs agents, and agents invoke capabilities over neutral protocols. Capabilities change workflows, workflows require authority, and authority requires governance. Governance requires observability and simulation, observability enables adaptation, and adaptation requires proof and human oversight. Human agency turns automation into responsible action, and regeneration turns responsible action into durable enterprise capacity. That was the architecture in Version 1.0, and it is the architecture now, with the upper layers carrying more weight because that is where the market moved.
 
-**For HR and operating leaders,** human agency becomes a design requirement. The workforce must not be reduced to exception handling for opaque machines, which means new skills, clearer judgment roles, better feedback loops, and meaningful oversight.
+The year between the two versions resolved the open question of Version 1.0. The governed-action layer is no longer a forecast. It is the contested layer of the present era, the place every category of provider is racing to own and the place an enterprise must architect deliberately if it is to act through autonomous systems without losing accountability, context, memory, and control. Capability commoditized, the protocols went neutral, and the prize moved up to governance, exactly where this stack places it. Because the architecture belongs to no provider, an enterprise can use it to hold every provider to the same standard.
 
-**For boards,** oversight must include value, risk, human agency, resilience, resource use, delegated authority, and recursive adaptation. The right board question is not whether the enterprise has AI, but whether its AI is governed, observable, adaptive, and regenerative.
+**The stack does not end at models. It does not end at tools. It does not end at agents. It does not end at protocols. It ends at governed, regenerative action, and that is where the next enterprise will be built.**
 
+# Appendices
 
-## 21. Implementation Path
+## Appendix A. Change Log: Version 1.0 to Version 2.0
 
-A practical implementation path begins with work and value, not with tools. The enterprise should first identify high-value decision and activity loops, the places where AI can improve judgment, speed, quality, coordination, or customer outcomes, and then map each loop against the stack. A strong pattern follows seven steps.
+This appendix records every material change from the December 10, 2025 reference architecture to this revision, with the reason for each. Layers and planes not listed are carried forward unchanged in logic. All references are neutral standards, research, or the author's framework essays; no commercial vendor is cited as authority.
 
-### Step 1: Define the outcome
+| Layer or element | What changed in v2.0 | Why it changed |
+| --- | --- | --- |
+| Stance | Made the document explicitly vendor-agnostic; market patterns expressed as strategy archetypes (Appendix B). | A reference architecture must hold any provider to a neutral baseline rather than anchor on products. |
+| Framing | Added the era-of-governed-action frame as the third in a control-point sequence after the systems of record and engagement. | Every category of provider converged on the governed-action layer in H1 2026, validating the v1.0 thesis (Reddy, 2026i). |
+| Thesis | Promoted two supporting claims to load-bearing: the objective function is strategy, and proprietary judgment outweighs proprietary data. Added capability commoditization. | Open weights collapsed model price; value moved to the governed interface (Reddy, 2026e; 2026j). |
+| Layer 6 Protocol | Tool-and-data and agent-to-agent protocols placed under neutral foundation governance; OAuth 2.1, resource indicators, registry, async tasks, server identity, elicitation, client-identity metadata, extensions. | The connection layer matured and went neutral, pushing the contested layer up to governance (Linux Foundation, 2025; Model Context Protocol, 2025; A2A Project, 2025). |
+| Layer 8 Governance | Agent identity made concrete (per-agent identity, scoped and session-bound authority); five governance questions made canonical; NIST agent standards work added; control plane reframed as strategic. | Identity became the control surface and the battlefield; standards bodies opened agentic work (NIST, 2026; South et al., 2025). |
+| Layer 9 Assurance | Added standardized agent observability and process simulation as a first-class discipline; auditability named as the product in regulated settings. | Agent behavior varies with context, so simulation and trace standards became prerequisites for production (OpenTelemetry, 2025; Reddy, 2026c; 2026f). |
+| Layer 10 Adaptation | Grounded the two-loop distinction in reinforcing and balancing loops; named proof as the binding constraint; adopted ADAM (Adaptive Development and Assurance Machine) as the operating construct, with its Governor (routine automated brakes plus a human-held emergency brake) and a five-level maturity model. | Generation became cheap while verification did not; ADAM supersedes the earlier learning-cycle framing and names the brake explicitly (Reddy, 2026h; 2026k; Sculley et al., 2015; Shavit et al., 2023). |
+| Layer 11 Experience | Reframed around interface as strategy and the outcome economy; pricing shifts from per-seat to completed work. | After capability stops being scarce, the coordination point is where power settles (Reddy, 2026j; 2026i). |
+| Layer 12 Human Agency | Added the AI-Native Architect role, the ADAM machine and its human-held emergency brake, ADAM's explicit list of human-owned decisions, access-versus-agency, firm compression, and board-level delegation ownership. | The human role that designs and governs the architecture had to be named, delegation became a governance matter, and overreliance makes the human brake non-negotiable (Reddy, 2026b; 2026k; 2026e; Parasuraman & Riley, 1997). |
+| Governance Plane | Reframed from safety mechanism to strategic instrument; strategic divergence treated as a governed asset. | Objective functions and boundaries are how a firm stays distinct amid convergence (Reddy, 2026e; van Esch et al., 2026). |
+| Regeneration Plane | Grounded in Regenerative Systems Thinking (21 leverage points, five Agentic Intelligence Levers) and the RPM domains with trust, proof, and stewardship. | The regeneration logic needed an operating discipline that maps onto the stack (Reddy, 2025f; 2025e). |
+| Two-Loop / ADAM | Mapped the two loops onto ADAM, with its forward path (Signal, Shape, Build, Prove, Govern), return path, and Governor; added the prove step and the human-held emergency brake to the governance loop. | The loops needed a human-facing operating machine and an explicit proof-plus-brake gate; ADAM provides both (Reddy, 2026k; 2026h). |
+| Naming correction | Retired the ADLC and Autonomous Design and Learning Cycle labels throughout in favor of ADAM (Adaptive Development and Assurance Machine). | The canon updated ADLC to ADAM, which fuses Adaptive Development with Assurance rather than describing a learning loop alone (Reddy, 2026k). |
+| Readiness Checklist | Added rows for agent identity, simulation, interface and outcomes, and the human architect role. | These capabilities became load-bearing during the agentic year. |
+| New Part IV | Added a vendor-agnostic market-pattern section and a strategy-archetype map (Appendix B). | To capture the autonomous-enterprise convergence of 2026 without anchoring on named vendors. |
 
-Clarify the business outcome, operational metric, risk boundary, and stakeholder value before naming any model or vendor. Starting with a tool is the most common way to build something impressive that no one needs.
+## Appendix B. Control-Plane Strategy Archetypes
 
-### Step 2: Map the decision-action loop
+This map describes the positions from which the governed-action layer is being approached, by archetype rather than by company. It is the vendor-agnostic form of the market analysis: an enterprise can place any provider into one or more of these archetypes and read its likely strengths and limits.
 
-Identify the signals, context, decisions, actions, humans, tools, approvals, systems of record, and artifacts involved, so the real shape of the work is visible rather than assumed.
+| Archetype | Center of gravity | Control-plane move and structural limit |
+| --- | --- | --- |
+| System-of-record core | Business truth and transactional semantics | Grounds agents in the record that books the money, with the most consequential actions human-confirmed. Strongest where the process lives inside the record; weaker across systems it does not own. |
+| Workflow fabric | Cross-functional workflow and service management | Offers a control tower to govern, secure, and measure any agent, model, or workflow, including third-party agents. Governs work well; understands deep domain semantics less. |
+| Identity and workplace | Identity and the place work already happens | Issues a distinct identity per agent so policy attaches to the actor. Strong where work originates on its surface; dependent on reach into other systems. |
+| Customer-relationship platform | Customer data and engagement | Routes agent actions through a trust layer that checks policy, grounding, and privacy before completion. Strongest where customer context dominates. |
+| Model-and-cloud provider | Model and cloud together | Packages model, agent builder, and governance, and backs cross-vendor agent protocols. Brings intelligence and scale; carries less system-of-record gravity. |
+| Cross-system execution platform | Execution across fragmented systems | Runs a four-layer autonomy stack with one audit record across processes and simulation. Broad reach across messy work; broad reach is not deep semantics. |
+| Frontier-model provider | Raw intelligence and developer adoption | Ships agent frameworks and protocols from the model side. Powerful, but capability commoditizes and value moves up to governance. |
+| Governance and observability challenger | The neutral whitespace itself | Builds agent identity, governance, observability, evaluation, simulation, memory, and compliance as cross-provider infrastructure. Must reach production scale and trust. |
 
-### Step 3: Establish context authority
+The shared structure is decisive. Each archetype can credibly claim part of the governed-action layer from its position of strength, and none can neutrally certify the agents that compete with its own. That structural gap, neutral accountability over agents, is the contested whitespace this architecture is built to occupy.
 
-Define trusted data sources, semantic definitions, policy constraints, lineage requirements, and memory rules. This is where most agentic failures are prevented, long before any agent runs.
+## Appendix C. Protocol Evolution Timeline (2025 to mid-2026)
 
-### Step 4: Design the authority envelope
+The connection layer matured quickly, and the timeline below records the developments that turned the two agent protocols from developer conveniences into neutral enterprise infrastructure, which is what moved the contested layer up to governance. Protocols and foundations are named because they are open standards, not vendor products.
 
-Specify what the AI system may do, what it may not do, which actions require review, and when escalation is mandatory, and bind that envelope to identity so it can be enforced at runtime (Autio et al., 2024; South et al., 2025).
+| Date | Development |
+| --- | --- |
+| Nov 2024 | An open standard for connecting AI applications to tools and data is introduced (Model Context Protocol, 2025). |
+| Mar 2025 | The tool-and-data protocol adds Streamable HTTP and OAuth 2.1, broadening enterprise viability (Model Context Protocol, 2025). |
+| Apr 2025 | An agent-to-agent coordination protocol is published, with agent cards, tasks, messages, and artifacts (A2A Project, 2025). |
+| Jun 2025 | The tool-and-data protocol formalizes servers as OAuth resource servers with resource indicators; the agent-to-agent protocol moves under neutral foundation governance (Model Context Protocol, 2025; A2A Project, 2025). |
+| Sep 2025 | A public registry launches for discovering tool-and-data servers; the agent-to-agent protocol passes well over 100 organizations (Model Context Protocol, 2025; Reddy, 2026j). |
+| Nov 2025 | A major specification release adds async tasks, server identity, elicitation, server-side agent loops, client-identity metadata documents, and extensions (Model Context Protocol, 2025). |
+| Dec 2025 | The tool-and-data protocol is donated to a neutral, multi-party agentic foundation under the Linux Foundation (Linux Foundation, 2025). |
+| H1 2026 | The first official extension ships; the agent-to-agent protocol passes 150 organizations with broad cloud integration (Model Context Protocol, 2025; Reddy, 2026j). |
 
-### Step 5: Build the activity runtime
+## Appendix D. Framework Cross-Walk
 
-Connect models, tools, workflows, humans, and systems through explicit contracts and observable execution, rather than through brittle point-to-point integrations.
+This appendix maps the stack onto the broader analytical canon that grew up around Version 1.0 and now uses it as a foundation. These are analytical frameworks and theses under validation, the author's own conceptual vocabulary, not commercial products. Any working names attached to ventures in shaping are explorations under validation, not offerings.
 
-### Step 6: Instrument proof
+| Framework construct | Relationship to the stack |
+| --- | --- |
+| The era of governed action | The market-level name for the architecture-level problem this stack specifies: the contest for the governed-action layer (Reddy, 2026i). |
+| AI-Native Architect | The human role at Layer 12 that designs and governs the whole architecture (Reddy, 2026b). |
+| ADAM (Adaptive Development and Assurance Machine) | The governed operating machine for the two loops in Part III: a forward path (Signal, Shape, Build, Prove, Govern), a return path that closes production into design, and the Governor that brakes the loop, with a five-level maturity model. Supersedes the earlier learning-cycle framing (Reddy, 2026k). |
+| The Governor | ADAM's Assurance function at Layers 9, 10, and 12: automated routine brakes plus one human-held emergency brake, the mechanism this stack calls the balancing loop and the proof gate (Reddy, 2026k). |
+| Regenerative Systems Thinking | The leverage discipline beneath the Regeneration plane; its Agentic Intelligence Levers map onto Layers 8, 10, and 12 (Reddy, 2025f). |
+| Regenerative Prosperity Model | The operating spine of the Regeneration plane: five domains connected by trust, verified by proof, renewed through stewardship (Reddy, 2025e). |
+| Autonomous risk intelligence | The regulated proving ground for Layer 9, where auditability is the product (Reddy, 2026c). |
+| Working venture names | Names attached to theses in shaping around the governed-action layer; explorations under validation, not built or shipped systems (Reddy, 2026j). |
 
-Capture traces, evaluations, policy checks, approvals, costs, outcomes, and decision receipts, using open conventions so the instrumentation survives changes of vendor and framework (OpenTelemetry, 2025).
+## Appendix E. Method, Sources, and Writing Note
 
-### Step 7: Activate Recursive Self-Adaptation
+**Vendor neutrality.** This revision names open standards, neutral foundations, and research and standards bodies, because those are shared infrastructure. It does not name commercial vendors as authorities or examples; where a market position is relevant it is described by strategy archetype (Appendix B). Findings originally reported about specific products are restated generically.
 
-Allow the system to propose improvements, but require governance, proof, reversibility, and monitoring before any change is applied. This sequence avoids the common failure of deploying AI before the enterprise understands work, authority, context, and value.
+**Argument structure.** Version 1.0 led with thesis-and-kill-signal supported by pattern accumulation. Version 2.0 inverts the emphasis to match the evidence: it leads with pattern accumulation, the convergence of every category of provider and both protocols on the governed-action layer, supported by cost-of-error asymmetry, the difference between a wrong answer and a wrong action.
 
+**Date discipline.** Version 1.0 bounded its sources to on or before December 10, 2025. Version 2.0 extends the window to June 30, 2026 and incorporates the developments of the intervening period. Where a figure is an analyst projection or a research estimate, it is presented as such.
 
-## 22. The Regenerative Enterprise Standard
-
-A mature enterprise AI architecture should be judged by a higher standard than automation volume. It should be judged by whether it regenerates enterprise capability. A regenerative system improves the conditions of future performance. It makes the enterprise clearer rather than more confused, people more capable rather than more dependent, processes simpler rather than more brittle, knowledge more accessible rather than more fragmented, governance more real rather than more performative, and adaptation safer rather than more chaotic.
-
-This gives leaders a sharper test, expressed as a set of either-or questions. Does AI reduce work, or improve the quality of work? Does it replace judgment, or strengthen it? Does it accelerate decisions, or also improve their quality? Does it automate dysfunction, or redesign the system? Does it create more tools, or more capability? Does it consume trust, or produce proof? Does it scale activity, or regenerate value?
-
-The pattern in those answers is the difference between an AI-enabled enterprise and an AI-native one. The first accumulates tools. The second builds capacity, which is the only durable advantage in a landscape where models, protocols, and vendors will keep changing underneath it.
-
-
-## 23. Conclusion: The Stack Ends at Governed, Regenerative Action
-
-The enterprise AI stack is not merely a technology stack. It is a governed operating architecture for action, and its layers form a chain. Energy powers compute, compute serves models, and models reason over context. Context flows through memory, memory informs agents, and agents invoke capabilities. Capabilities change workflows, workflows require authority, and authority requires governance. Governance requires observability, observability enables adaptation, and adaptation requires human oversight. Human agency turns automation into responsible action, and regeneration turns responsible action into durable enterprise capacity.
-
-That is the full architecture, and it returns us to the claim made at the start. The future enterprise will not be defined by how many copilots it deploys or how many agents it launches. It will be defined by its ability to convert intelligence into trusted work, to preserve human agency, to adapt recursively without losing control, and to regenerate the conditions of future value. The tell that an organization has missed this remains the same throughout: automation piling up while adaptive capacity stays flat.
-
-**The stack does not end at models. It does not end at tools. It does not end at agents. It ends at governed, regenerative action.**
-
+**Writing mandate.** The document uses no em dashes, holds paragraphs to a readable length with one idea each, varies sentence length deliberately, and frames venture names as theses under validation rather than products. En dashes appear only in reference page ranges.
 
 ## References
 
-*All sources cited in this reference architecture were published on or before December 10, 2025. A future revision will incorporate developments after that date.*
+*Sources span on or before June 30, 2026. Only neutral standards, foundations, research, and the author's framework essays are cited; no commercial vendor is cited as authority.*
 
 A2A Project. (2025). *Agent2Agent (A2A) protocol specification.* Linux Foundation. https://a2a-protocol.org
 
 Autio, C., Schwartz, R., Dunietz, J., Jain, S., Stanley, M., Tabassi, E., Hall, P., & Roberts, K. (2024). *Artificial intelligence risk management framework: Generative artificial intelligence profile* (NIST AI 600-1). National Institute of Standards and Technology. https://doi.org/10.6028/NIST.AI.600-1
 
-Google. (2025, April 9). *Announcing the Agent2Agent protocol (A2A).* Google for Developers. https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/
+Deloitte. (2026). *State of AI in the enterprise 2026.*
+
+Gartner. (2025, June 25). *Gartner predicts over 40% of agentic AI projects will be canceled by end of 2027* [Press release]. https://www.gartner.com/en/newsroom
 
 International Energy Agency. (2025). *Energy and AI* (World Energy Outlook special report). IEA. https://www.iea.org/reports/energy-and-ai
 
-Model Context Protocol. (2025). *Specification: Server features (resources, prompts, and tools).* https://modelcontextprotocol.io/specification
+Linux Foundation. (2025, December 9). *Linux Foundation announces the formation of the Agentic AI Foundation (AAIF)* [Press release]. https://www.linuxfoundation.org/press
+
+Meadows, D. H. (1999). *Leverage points: Places to intervene in a system.* The Sustainability Institute.
+
+MIT NANDA. (2025). *The GenAI divide: State of AI in business 2025.* MIT Media Lab, Project NANDA.
+
+Model Context Protocol. (2025). *Specification (2025-11-25) and protocol history.* https://modelcontextprotocol.io/specification
 
 National Institute of Standards and Technology. (2023). *Artificial intelligence risk management framework (AI RMF 1.0)* (NIST AI 100-1). https://doi.org/10.6028/NIST.AI.100-1
 
-OpenTelemetry. (2025). *Semantic conventions for generative AI.* Cloud Native Computing Foundation. https://opentelemetry.io/docs/specs/semconv/gen-ai/
+National Institute of Standards and Technology. (2026). *AI Agent Standards Initiative.* Center for AI Standards and Innovation (CAISI).
 
-OWASP. (2025). *OWASP Top 10 for large language model applications (2025).* OWASP GenAI Security Project. https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/
+OpenTelemetry. (2025). *Semantic conventions for generative AI, agents, and tool protocols.* Cloud Native Computing Foundation. https://opentelemetry.io/docs/specs/semconv/gen-ai/
+
+OWASP. (2025). *OWASP Top 10 for large language model applications (2025).* OWASP GenAI Security Project. https://genai.owasp.org
+
+Parasuraman, R., & Riley, V. (1997). Humans and automation: Use, misuse, disuse, abuse. *Human Factors, 39*(2), 230–253. https://doi.org/10.1518/001872097778543886
+
+Reddy, S. (2025b, July 26). *The AI class structure: Inequality, agency, and power in the age of machine intelligence.* 451 Ventures.
+
+Reddy, S. (2025d, November 3). *AI-native organization design 2030: Structural compression, human augmentation, and the redesign of the firm.* 451 Ventures.
+
+Reddy, S. (2025e, November 30). *Regenerative Prosperity Model 2.0: From regenerative philosophy to regenerative operating system.* 451 Ventures.
+
+Reddy, S. (2025f, December 29). *Regenerative systems thinking for the agentic enterprise: 21 leverage points for governing intelligence, capital, and life.* 451 Ventures.
+
+Reddy, S. (2026b, March 24). *The AI-native architect: A new human archetype for the age of agentic enterprise.* 451 Ventures.
+
+Reddy, S. (2026c, May 11). *Architecting trust: From agentic AI to autonomous risk intelligence.* 451 Ventures.
+
+Reddy, S. (2026d, May 13). *The autonomous enterprise as a market signal: From systems of record to systems of autonomous execution.* 451 Ventures.
+
+Reddy, S. (2026e, May 14). *Beyond agentic AI: The case for the governed autonomous enterprise.* 451 Ventures.
+
+Reddy, S. (2026f, May 19). *The architecture of the autonomous enterprise: A four-layer autonomy stack.* 451 Ventures.
+
+Reddy, S. (2026g, May 29). *Level 6 leadership: The leadership model for the age of agentic enterprise.* 451 Ventures.
+
+Reddy, S. (2026h, June 7). *Recursive self-improvement and the ancient problem of control.* 451 Ventures.
+
+Reddy, S. (2026i, June 10). *The era of governed action: The software contest after the systems of record and engagement.* 451 Ventures.
+
+Reddy, S. (2026j, June 22). *Interface as strategy.* 451 Ventures.
+
+Reddy, S. (2026k, June). *ADAM: The Adaptive Development and Assurance Machine.* 451 AI Company (a 451 Ventures company).
+
+Sculley, D., Holt, G., Golovin, D., Davydov, E., Phillips, T., Ebner, D., Chaudhary, V., Young, M., Crespo, J.-F., & Dennison, D. (2015). Hidden technical debt in machine learning systems. In *Advances in Neural Information Processing Systems 28* (pp. 2503–2511).
+
+Shavit, Y., Agarwal, S., Brundage, M., Adler, S., O'Keefe, C., Campbell, R., Lee, T., Mishkin, P., Eloundou, T., Hickey, A., Slama, K., Ahmad, L., McMillan, P., Beutel, A., Passos, A., & Robinson, D. G. (2023). *Practices for governing agentic AI systems.* OpenAI.
 
 South, T., Marro, S., Hardjono, T., Mahari, R., Whitney, C., Greenwood, D., Chan, A., & Pentland, A. (2025). *Authenticated delegation and authorized AI agents* (arXiv:2501.09674). https://arxiv.org/abs/2501.09674
+
+van Esch, P., Cui, Y. G., & Black, J. S. (2026, May 13). *Beware the agentic convergence trap.* Harvard Business Review.
