@@ -64,3 +64,5 @@ A system telling you it's trustworthy isn't the same as proving it. The systems 
 ## Let's build
 
 If you're working on agentic systems, AI governance, Physical AI, regenerative intelligence, food as health, Code Meets Soil, or trusted autonomy more broadly, I'd like to hear from you.
+
+
